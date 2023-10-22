@@ -40,25 +40,31 @@ INSERT INTO gifts (gift, giver, price, previuosly_regifted) VALUES ('peach candl
 --
 \echo Query for all the columns in your gifts table
 -- 
-
+SELECT * FROM gifts;
 
 --
 \echo Uncomment below to insert 5 more gifts
 -- 
 
--- INSERT INTO gifts (gift, giver, value, previously_regifted)
--- VALUES
--- ('peach candle', 'Santa', '9', TRUE),
--- ('cinnamon candle', 'Nick', '19', TRUE),
--- ('soap on a rope', 'Rudolf', '29', FALSE),
--- ('potpurri', 'Elf on the Shelf', '39', TRUE),
--- ('mango candle', 'The Boss', '49', FALSE)
--- ;
+ INSERT INTO gifts (gift, giver, value, previously_regifted)
+ VALUES
+ ('peach candle', 'Santa', '9', TRUE),
+ ('cinnamon candle', 'Nick', '19', TRUE),
+ ('soap on a rope', 'Rudolf', '29', FALSE),
+ ('potpurri', 'Elf on the Shelf', '39', TRUE),
+ ('mango candle', 'The Boss', '49', FALSE);
+ 
 
 -- 
 \echo Insert 5 more gifts of your own choosing,  include 1 more candle
 --
-
+INSERT INTO gifts (gift, giver, value, previously_regifted)
+ VALUES
+ ('apple candle', 'Samantha', '42', TRUE),
+ ('cherry candle', 'Noel', '20', FALSE),
+ ('toy cars', 'Ray', '59', TRUE),
+ ('tv', 'Grinch', '69', FALSE),
+ ('lemon candle', 'Terry', '99', TRUE);
 
 
 --
