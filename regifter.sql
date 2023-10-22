@@ -9,6 +9,8 @@ CREATE DATABASE regifter;
 
 --
 \echo Create a table called gifts
+
+regifter=# CREATE TABLE gifts (id SERIAL PRIMARY KEY, gift TEXT, giver TEXT, value INT, previously_regifted BOOLEAN);
 -- with the following columns
 -- id serial primary KEY
 -- gift - string
@@ -20,6 +22,7 @@ CREATE DATABASE regifter;
 -- 
 \echo See details of the table you created
 -- 
+regifter=# \d gifts
 
 
 -- 
@@ -27,15 +30,16 @@ CREATE DATABASE regifter;
 -- 
 
 
+
 -- 
 \echo Insert a peach candle, given by 'Santa' thats value is 9 and has been previously regifted
 -- 
-
+INSERT INTO gifts (id, gift, giver, value, previously_regifted) VALUES (1, 'Peach Candle', 'Santa', 9, TRUE);
 
 --
 \echo Query for all the columns in your gifts table
 -- 
-
+regifter=# SELECT * FROM gifts;
 
 --
 \echo Uncomment below to insert 5 more gifts
@@ -52,12 +56,14 @@ VALUES
 
 -- 
 \echo Insert 5 more gifts of your own choosing,  include 1 more candle
-('gameboy', 'Mom', '100', FALSE),
-('puppy', 'Dad', '1000', FALSE),
-('sketchpad', 'Grandma', '10', TRUE), 
-('baby doll', 'Aunt', '25', TRUE), 
-('jigsaw puzzle', 'Santa', '5', FALSE), 
-('vanilla candle', 'Neighbor', '10', TRUE)
+
+regifter=# INSERT INTO gifts (gift, giver, value, previously_regifted)
+regifter-# VALUES ('gameboy', 'Mom', '100', FALSE),
+regifter-# ('puppy', 'Dad', '1000', FALSE),
+regifter-# ('sketchpad', 'Grandma', '10', TRUE),
+regifter-# ('baby doll', 'Aunt', '25', TRUE),
+regifter-# ('jigsaw puzzle', 'Santa', '5', FALSE),
+regifter-# ('vanilla candle', 'Neighbor', '10', TRUE);
 
 
 
