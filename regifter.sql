@@ -82,27 +82,57 @@ regifter=# SELECT * FROM gifts WHERE value >= 20;
 --
 \echo Query for every gift that has the word candle in it, only show the gift column
 --
-
+regifter=# SELECT gift FROM gifts WHERE gift LIKE '%candle%';
+ cinnamon candle
+ mango candle
+ vanilla candle
 
 --
 \echo Query for every gift whose giver is Santa OR value is greater than 30
 --
-
+regifter=# SELECT giver, value FROM gifts WHERE giver = 'Santa' OR value > 30;
+ Santa            |     9
+ Elf on the Shelf |    39
+ The Boss         |    49
+ Mom              |   100
+ Dad              |  1000
+ Santa            |     5
 
 --
 \echo Query for every gift whose giver is NOT Santa
 --
 
-
+regifter=# SELECT giver FROM gifts WHERE giver != 'Santa';
+ Nick
+ Rudolf
+ Elf on the Shelf
+ The Boss
+ Mom
+ Dad
+ Grandma
+ Aunt
+ Neighbor
 --
 \echo Update the second gift to have a value of 2999
 -- 
 
-
+regifter=# UPDATE gifts SET value = 2999 WHERE id = 2;
+UPDATE 1
 --
 \echo Query for the updated item
 --
-
+regifter=# SELECT * FROM gifts;
+  1 | Peach Candle    | Santa            |     9 | t
+  3 | soap on a rope  | Rudolf           |    29 | f
+  4 | potpurri        | Elf on the Shelf |    39 | t
+  5 | mango candle    | The Boss         |    49 | f
+  6 | gameboy         | Mom              |   100 | f
+  7 | puppy           | Dad              |  1000 | f
+  8 | sketchpad       | Grandma          |    10 | t
+  9 | baby doll       | Aunt             |    25 | t
+ 10 | jigsaw puzzle   | Santa            |     5 | f
+ 11 | vanilla candle  | Neighbor         |    10 | t
+  2 | cinnamon candle | Nick             |  2999 | t
 
 --
 \echo Delete all the gifts from Santa and return the 'value' and 'gift' of the gift you have deleted
