@@ -161,18 +161,25 @@ regifter=# SELECT * FROM gifts;
 --
  \echo Count the total number of gifts that have the word candle in it
 -- 
-
+regifter=# SELECT COUNT(gift) FROM gifts WHERE gift LIKE '%candle%';
+     3
 
 --
 \echo Get the AVEREAGE value from all the gifts
 --
+regifter=# SELECT AVG(value) FROM gifts;
+ 473.4444444444444444
 
 
 -- 
  \echo Limit to 3 gifts, offset by 2 and order by price descending
 --
-
+ SELECT value FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
 --
+regifter=#  SELECT value FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
+   100
+    49
+    39
 -- finish
 --
 DROP TABLE IF EXISTS gifts;
