@@ -71,7 +71,13 @@ regifter-# ('vanilla candle', 'Neighbor', '10', TRUE);
 --
 \echo Query for gifts with a price greater than or equal to 20
 --
-
+regifter=# SELECT * FROM gifts WHERE value >= 20;
+  3 | soap on a rope | Rudolf           |    29 | f
+  4 | potpurri       | Elf on the Shelf |    39 | t
+  5 | mango candle   | The Boss         |    49 | f
+  6 | gameboy        | Mom              |   100 | f
+  7 | puppy          | Dad              |  1000 | f
+  9 | baby doll      | Aunt             |    25 | t
 
 --
 \echo Query for every gift that has the word candle in it, only show the gift column
