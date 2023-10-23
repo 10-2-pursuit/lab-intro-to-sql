@@ -10,7 +10,7 @@ CREATE DATABASE regifter;
 --
 \echo Create a table called gifts
 
-regifter=# CREATE TABLE gifts (id SERIAL PRIMARY KEY, gift TEXT, giver TEXT, value INT, previously_regifted BOOLEAN);
+ CREATE TABLE gifts (id SERIAL PRIMARY KEY, gift TEXT, giver TEXT, value INT, previously_regifted BOOLEAN);
 -- with the following columns
 -- id serial primary KEY
 -- gift - string
@@ -22,7 +22,7 @@ regifter=# CREATE TABLE gifts (id SERIAL PRIMARY KEY, gift TEXT, giver TEXT, val
 -- 
 \echo See details of the table you created
 -- 
-regifter=# \d gifts
+ \d gifts
 
 
 -- 
@@ -39,7 +39,7 @@ INSERT INTO gifts (id, gift, giver, value, previously_regifted) VALUES (1, 'Peac
 --
 \echo Query for all the columns in your gifts table
 -- 
-regifter=# SELECT * FROM gifts;
+SELECT * FROM gifts;
 
 --
 \echo Uncomment below to insert 5 more gifts
