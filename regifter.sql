@@ -57,13 +57,13 @@ VALUES
 -- 
 \echo Insert 5 more gifts of your own choosing,  include 1 more candle
 
-regifter=# INSERT INTO gifts (gift, giver, value, previously_regifted)
-regifter-# VALUES ('gameboy', 'Mom', '100', FALSE),
-regifter-# ('puppy', 'Dad', '1000', FALSE),
-regifter-# ('sketchpad', 'Grandma', '10', TRUE),
-regifter-# ('baby doll', 'Aunt', '25', TRUE),
-regifter-# ('jigsaw puzzle', 'Santa', '5', FALSE),
-regifter-# ('vanilla candle', 'Neighbor', '10', TRUE);
+INSERT INTO gifts (gift, giver, value, previously_regifted)
+VALUES ('gameboy', 'Mom', '100', FALSE),
+('puppy', 'Dad', '1000', FALSE),
+('sketchpad', 'Grandma', '10', TRUE),
+('baby doll', 'Aunt', '25', TRUE),
+('jigsaw puzzle', 'Santa', '5', FALSE),
+ ('vanilla candle', 'Neighbor', '10', TRUE);
 
 
 
@@ -71,7 +71,7 @@ regifter-# ('vanilla candle', 'Neighbor', '10', TRUE);
 --
 \echo Query for gifts with a price greater than or equal to 20
 --
-regifter=# SELECT * FROM gifts WHERE value >= 20;
+SELECT * FROM gifts WHERE value >= 20;
   3 | soap on a rope | Rudolf           |    29 | f
   4 | potpurri       | Elf on the Shelf |    39 | t
   5 | mango candle   | The Boss         |    49 | f
@@ -82,7 +82,7 @@ regifter=# SELECT * FROM gifts WHERE value >= 20;
 --
 \echo Query for every gift that has the word candle in it, only show the gift column
 --
-regifter=# SELECT gift FROM gifts WHERE gift LIKE '%candle%';
+SELECT gift FROM gifts WHERE gift LIKE '%candle%';
  cinnamon candle
  mango candle
  vanilla candle
@@ -90,7 +90,7 @@ regifter=# SELECT gift FROM gifts WHERE gift LIKE '%candle%';
 --
 \echo Query for every gift whose giver is Santa OR value is greater than 30
 --
-regifter=# SELECT giver, value FROM gifts WHERE giver = 'Santa' OR value > 30;
+ SELECT giver, value FROM gifts WHERE giver = 'Santa' OR value > 30;
  Santa            |     9
  Elf on the Shelf |    39
  The Boss         |    49
@@ -102,7 +102,7 @@ regifter=# SELECT giver, value FROM gifts WHERE giver = 'Santa' OR value > 30;
 \echo Query for every gift whose giver is NOT Santa
 --
 
-regifter=# SELECT giver FROM gifts WHERE giver != 'Santa';
+ SELECT giver FROM gifts WHERE giver != 'Santa';
  Nick
  Rudolf
  Elf on the Shelf
@@ -116,12 +116,12 @@ regifter=# SELECT giver FROM gifts WHERE giver != 'Santa';
 \echo Update the second gift to have a value of 2999
 -- 
 
-regifter=# UPDATE gifts SET value = 2999 WHERE id = 2;
+UPDATE gifts SET value = 2999 WHERE id = 2;
 UPDATE 1
 --
 \echo Query for the updated item
 --
-regifter=# SELECT * FROM gifts;
+ SELECT * FROM gifts;
   1 | Peach Candle    | Santa            |     9 | t
   3 | soap on a rope  | Rudolf           |    29 | f
   4 | potpurri        | Elf on the Shelf |    39 | t
@@ -137,14 +137,14 @@ regifter=# SELECT * FROM gifts;
 --
 \echo Delete all the gifts from Santa and return the 'value' and 'gift' of the gift you have deleted
 --
-regifter=# DELETE FROM gifts WHERE giver = 'Santa' RETURNING value, gift;
+DELETE FROM gifts WHERE giver = 'Santa' RETURNING value, gift;
      9 | Peach Candle
      5 | jigsaw puzzle
 
 --
 \echo Query for all the columns in your gifts table one more time
 --
-regifter=# SELECT * FROM gifts;
+ SELECT * FROM gifts;
   3 | soap on a rope  | Rudolf           |    29 | f
   4 | potpurri        | Elf on the Shelf |    39 | t
   5 | mango candle    | The Boss         |    49 | f
@@ -161,13 +161,13 @@ regifter=# SELECT * FROM gifts;
 --
  \echo Count the total number of gifts that have the word candle in it
 -- 
-regifter=# SELECT COUNT(gift) FROM gifts WHERE gift LIKE '%candle%';
+SELECT COUNT(gift) FROM gifts WHERE gift LIKE '%candle%';
      3
 
 --
 \echo Get the AVEREAGE value from all the gifts
 --
-regifter=# SELECT AVG(value) FROM gifts;
+SELECT AVG(value) FROM gifts;
  473.4444444444444444
 
 
@@ -176,7 +176,7 @@ regifter=# SELECT AVG(value) FROM gifts;
 --
  SELECT value FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
 --
-regifter=#  SELECT value FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
+SELECT value FROM gifts ORDER BY value DESC LIMIT 3 OFFSET 2;
    100
     49
     39
